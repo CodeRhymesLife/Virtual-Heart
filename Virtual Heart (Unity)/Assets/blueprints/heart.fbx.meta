@@ -1,0 +1,170 @@
+fileFormatVersion: 2
+guid: d97e33457cf82f04b9ddb24b5d829524
+timeCreated: 1450769339
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Generated_Mesh_From_X3D.001_Circumflex_branch_of_left_coronary_
+    100002: Generated_Mesh_From_X3D.002_Coronary_sinus.
+    100004: Generated_Mesh_From_X3D.003_Great_cardiac_vein.
+    100006: Generated_Mesh_From_X3D.004_Marginal_branch_of_right_coronary_a
+    100008: Generated_Mesh_From_X3D.005_Mitral_valve.
+    100010: Generated_Mesh_From_X3D.006_Posterior_papillary_muscle_of_left_
+    100012: Generated_Mesh_From_X3D.007_Posterior_papillary_muscle_of_right
+    100014: Generated_Mesh_From_X3D.008_Pulmonary_valve.
+    100016: Generated_Mesh_From_X3D.009_Right_posterolateral_branch_of_righ
+    100018: Generated_Mesh_From_X3D.010_Septal_papillary_muscle_of_right_ve
+    100020: Generated_Mesh_From_X3D.011_Tricuspid_valve.
+    100022: Generated_Mesh_From_X3D.012_Trunk_of_right_coronary_artery.
+    100024: Generated_Mesh_From_X3D.013_Wall_of_heart.
+    100026: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart0
+    100028: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart1
+    100030: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart2
+    100032: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart3
+    100034: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart4
+    100036: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart5
+    100038: Generated_Mesh_From_X3D_Anterior_Papillary_Muscle_of_Right_Vent
+    100040: //RootNode
+    400000: Generated_Mesh_From_X3D.001_Circumflex_branch_of_left_coronary_
+    400002: Generated_Mesh_From_X3D.002_Coronary_sinus.
+    400004: Generated_Mesh_From_X3D.003_Great_cardiac_vein.
+    400006: Generated_Mesh_From_X3D.004_Marginal_branch_of_right_coronary_a
+    400008: Generated_Mesh_From_X3D.005_Mitral_valve.
+    400010: Generated_Mesh_From_X3D.006_Posterior_papillary_muscle_of_left_
+    400012: Generated_Mesh_From_X3D.007_Posterior_papillary_muscle_of_right
+    400014: Generated_Mesh_From_X3D.008_Pulmonary_valve.
+    400016: Generated_Mesh_From_X3D.009_Right_posterolateral_branch_of_righ
+    400018: Generated_Mesh_From_X3D.010_Septal_papillary_muscle_of_right_ve
+    400020: Generated_Mesh_From_X3D.011_Tricuspid_valve.
+    400022: Generated_Mesh_From_X3D.012_Trunk_of_right_coronary_artery.
+    400024: Generated_Mesh_From_X3D.013_Wall_of_heart.
+    400026: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart0
+    400028: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart1
+    400030: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart2
+    400032: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart3
+    400034: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart4
+    400036: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart5
+    400038: Generated_Mesh_From_X3D_Anterior_Papillary_Muscle_of_Right_Vent
+    400040: //RootNode
+    2300000: Generated_Mesh_From_X3D.001_Circumflex_branch_of_left_coronary_
+    2300002: Generated_Mesh_From_X3D.002_Coronary_sinus.
+    2300004: Generated_Mesh_From_X3D.003_Great_cardiac_vein.
+    2300006: Generated_Mesh_From_X3D.004_Marginal_branch_of_right_coronary_a
+    2300008: Generated_Mesh_From_X3D.005_Mitral_valve.
+    2300010: Generated_Mesh_From_X3D.006_Posterior_papillary_muscle_of_left_
+    2300012: Generated_Mesh_From_X3D.007_Posterior_papillary_muscle_of_right
+    2300014: Generated_Mesh_From_X3D.008_Pulmonary_valve.
+    2300016: Generated_Mesh_From_X3D.009_Right_posterolateral_branch_of_righ
+    2300018: Generated_Mesh_From_X3D.010_Septal_papillary_muscle_of_right_ve
+    2300020: Generated_Mesh_From_X3D.011_Tricuspid_valve.
+    2300022: Generated_Mesh_From_X3D.012_Trunk_of_right_coronary_artery.
+    2300024: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart0
+    2300026: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart1
+    2300028: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart2
+    2300030: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart3
+    2300032: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart4
+    2300034: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart5
+    2300036: Generated_Mesh_From_X3D_Anterior_Papillary_Muscle_of_Right_Vent
+    3300000: Generated_Mesh_From_X3D.001_Circumflex_branch_of_left_coronary_
+    3300002: Generated_Mesh_From_X3D.002_Coronary_sinus.
+    3300004: Generated_Mesh_From_X3D.003_Great_cardiac_vein.
+    3300006: Generated_Mesh_From_X3D.004_Marginal_branch_of_right_coronary_a
+    3300008: Generated_Mesh_From_X3D.005_Mitral_valve.
+    3300010: Generated_Mesh_From_X3D.006_Posterior_papillary_muscle_of_left_
+    3300012: Generated_Mesh_From_X3D.007_Posterior_papillary_muscle_of_right
+    3300014: Generated_Mesh_From_X3D.008_Pulmonary_valve.
+    3300016: Generated_Mesh_From_X3D.009_Right_posterolateral_branch_of_righ
+    3300018: Generated_Mesh_From_X3D.010_Septal_papillary_muscle_of_right_ve
+    3300020: Generated_Mesh_From_X3D.011_Tricuspid_valve.
+    3300022: Generated_Mesh_From_X3D.012_Trunk_of_right_coronary_artery.
+    3300024: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart0
+    3300026: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart1
+    3300028: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart2
+    3300030: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart3
+    3300032: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart4
+    3300034: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart5
+    3300036: Generated_Mesh_From_X3D_Anterior_Papillary_Muscle_of_Right_Vent
+    4300000: Generated_Mesh_From_X3D.003_Great_cardiac_vein.
+    4300002: Generated_Mesh_From_X3D_Anterior_Papillary_Muscle_of_Right_Vent
+    4300004: Generated_Mesh_From_X3D.008_Pulmonary_valve.
+    4300006: Generated_Mesh_From_X3D.011_Tricuspid_valve.
+    4300008: Generated_Mesh_From_X3D.001_Circumflex_branch_of_left_coronary_
+    4300010: Generated_Mesh_From_X3D.012_Trunk_of_right_coronary_artery.
+    4300012: Generated_Mesh_From_X3D.005_Mitral_valve.
+    4300014: Generated_Mesh_From_X3D.006_Posterior_papillary_muscle_of_left_
+    4300016: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart0
+    4300018: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart1
+    4300020: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart2
+    4300022: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart3
+    4300024: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart4
+    4300026: Generated_Mesh_From_X3D.013_Wall_of_heart._MeshPart5
+    4300028: Generated_Mesh_From_X3D.007_Posterior_papillary_muscle_of_right
+    4300030: Generated_Mesh_From_X3D.004_Marginal_branch_of_right_coronary_a
+    4300032: Generated_Mesh_From_X3D.010_Septal_papillary_muscle_of_right_ve
+    4300034: Generated_Mesh_From_X3D.009_Right_posterolateral_branch_of_righ
+    4300036: Generated_Mesh_From_X3D.002_Coronary_sinus.
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
