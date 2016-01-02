@@ -1,1 +1,51 @@
-{"bodyOffset": {"y": -131.355712890625, "z": 1221.79296875, "x": 29.656145095825195}, "parts": {"Tricuspid valve": {"y": 2.0816192626953125, "z": 3.09375, "x": -27.4975528717041}, "Pulmonary valve": {"y": -12.300735473632812, "z": 42.5655517578125, "x": -3.172229766845703}, "Posterior papillary muscle of left ventricle": {"y": 5.676628112792969, "z": -9.45068359375, "x": 32.710235595703125}, "Circumflex branch of left coronary artery": {"y": 23.423934936523438, "z": -2.896240234375, "x": 35.15968322753906}, "Trunk of right coronary artery": {"y": -7.209228515625, "z": 9.076904296875, "x": -31.82610321044922}, "Posterior papillary muscle of right ventricle": {"y": -13.344650268554688, "z": -26.546142578125, "x": -8.422735214233398}, "Anterior Papillary Muscle of Right Ventricle": {"y": -30.448333740234375, "z": -15.80224609375, "x": -0.37075042724609375}, "Marginal branch of right coronary artery": {"y": -33.32525634765625, "z": -0.027099609375, "x": -12.256906509399414}, "Wall of heart": {"y": 10.636886596679688, "z": 13.927001953125, "x": -21.93441390991211}, "Right posterolateral branch of right coronary artery": {"y": 18.588424682617188, "z": -28.57958984375, "x": 23.856534957885742}, "Septal papillary muscle of right ventricle": {"y": -3.7097930908203125, "z": 14.25048828125, "x": -8.84457015991211}, "Great cardiac vein": {"y": -21.113037109375, "z": 2.5130615234375, "x": 27.833181381225586}, "Coronary sinus": {"y": 32.966094970703125, "z": -3.3040771484375, "x": -13.74766731262207}, "Mitral valve": {"y": 28.077537536621094, "z": 1.1790771484375, "x": 8.513277053833008}}}
+{
+	"location": {
+		"z": 1221.79296875,
+		"x": 29.656145095825195,
+		"y": -131.355712890625
+	},
+	"parts": {
+		"Coronary sinus": {
+			
+		},
+		"Wall of heart": {
+			
+		},
+		"Posterior papillary muscle of right ventricle": {
+			
+		},
+		"Marginal branch of right coronary artery": {
+			
+		},
+		"Tricuspid valve": {
+			
+		},
+		"Anterior Papillary Muscle of Right Ventricle": {
+			
+		},
+		"Septal papillary muscle of right ventricle": {
+			
+		},
+		"Great cardiac vein": {
+			
+		},
+		"Circumflex branch of left coronary artery": {
+			
+		},
+		"Trunk of right coronary artery": {
+			
+		},
+		"Pulmonary valve": {
+			
+		},
+		"Mitral valve": {
+			
+		},
+		"Right posterolateral branch of right coronary artery": {
+			
+		},
+		"Posterior papillary muscle of left ventricle": {
+			
+		}
+	}
+}
