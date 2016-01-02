@@ -14,7 +14,7 @@ public class label : MonoBehaviour {
 	void Update () {
         // Draw the line between the label and the anchor
         LineRenderer line = gameObject.GetComponent<LineRenderer>();
-        line.SetPosition(0, transform.position);
+        line.SetPosition(0, transform.position - new Vector3(0, transform.localScale.y, 0)); // Place the line at the bottom of the label
         line.SetPosition(1, Anchor.transform.position);
     }
 }
