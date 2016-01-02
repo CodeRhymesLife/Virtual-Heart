@@ -1,4 +1,5 @@
 {
+	"FMA Id": 7088,
 	"location": {
 		"z": 1221.79296875,
 		"x": 29.656145095825195,
@@ -6,46 +7,46 @@
 	},
 	"parts": {
 		"Coronary sinus": {
-			
+			"FMA Id": 4706,
 		},
 		"Wall of heart": {
-			
+			"FMA Id": 3818,
 		},
 		"Posterior papillary muscle of right ventricle": {
-			
+			"FMA Id": 7261,
 		},
 		"Marginal branch of right coronary artery": {
-			
+			"FMA Id": 3818,
 		},
 		"Tricuspid valve": {
-			
+			"FMA Id": 7234,
 		},
 		"Anterior Papillary Muscle of Right Ventricle": {
-			
+			"FMA Id": 7260,
 		},
 		"Septal papillary muscle of right ventricle": {
-			
+			"FMA Id": 7262,
 		},
 		"Great cardiac vein": {
-			
+			"FMA Id": 4707,
 		},
 		"Circumflex branch of left coronary artery": {
-			
+			"FMA Id": 3895,
 		},
 		"Trunk of right coronary artery": {
-			
+			"FMA Id": 3802,
 		},
 		"Pulmonary valve": {
-			
+			"FMA Id": 7246,
 		},
 		"Mitral valve": {
-			
+			"FMA Id": 7266,
 		},
 		"Right posterolateral branch of right coronary artery": {
-			
+			"FMA Id": 76994,
 		},
 		"Posterior papillary muscle of left ventricle": {
-			
+			"FMA Id": 7266,
 		}
 	}
 }
