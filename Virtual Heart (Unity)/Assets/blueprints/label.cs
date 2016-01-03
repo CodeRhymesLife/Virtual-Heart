@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Assets.Scripts;
 
 public class label : MonoBehaviour, ISelectable {
 
@@ -121,12 +122,28 @@ public class label : MonoBehaviour, ISelectable {
 
     public void Select()
     {
-        Debug.Log(name + " selected");
+        SetTextColor(selectionManager.Instance.SelectedColor);
+        ISelectable selectable = Anchor.GetComponent<ISelectable>();
+        if (selectable != null)
+            selectable.Select();
     }
 
     public void Deselect()
     {
-        Debug.Log(name + " deselected");
+        SetTextColor(Color.black);
+        ISelectable selectable = Anchor.GetComponent<ISelectable>();
+        if (selectable != null)
+            selectable.Deselect();
+    }
+
+    /// <summary>
+    /// Sets a color on the text
+    /// </summary>
+    /// <param name="color">color to set on text</param>
+    private void SetTextColor(Color color)
+    {
+        Debug.Log(name + ": setting label color to " + color);
+        gameObject.GetComponent<TextMesh>().color = color ;
     }
 
     #endregion ISelectable

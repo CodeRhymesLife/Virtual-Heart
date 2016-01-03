@@ -1,8 +1,11 @@
 ﻿using Assets.blueprints;
+using Assets.Scripts;
 using UnityEngine;
 
 
-public class organ : MonoBehaviour {
+public class organ : MonoBehaviour, ISelectable {
+
+    private Material originalMaterial;
 
     // Use this for initialization
     void Start () {
@@ -12,10 +15,37 @@ public class organ : MonoBehaviour {
         GameObject labelManagerGameObject = GameObject.Find("LabelManager");
         labelManager manager = labelManagerGameObject.GetComponent<labelManager>();
         manager.AddLabelFor(gameObject);
+
+        // Save the original material used on this mesh
+        foreach (MeshRenderer meshRenderer in GetComponentsInChildren<MeshRenderer>())
+        {
+            originalMaterial = meshRenderer.material;
+            break;
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    #region ISelectable
+
+    public void Select()
+    {
+        Debug.Log("Selecting " + name);
+        SetMaterial(selectionManager.Instance.SelectedMaterial);
+    }
+
+    public void Deselect()
+    {
+        Debug.Log("Selecting " + name);
+        SetMaterial(originalMaterial);
+    }
+
+    private void SetMaterial(Material material)
+    {
+        Debug.Log("Setting '" + material.name + "' on '" + name +"'");
+        foreach (MeshRenderer meshRenderer in GetComponentsInChildren<MeshRenderer>())
+        {
+            meshRenderer.material = material;
+        }
+    }
+
+    #endregion ISelectable
 }

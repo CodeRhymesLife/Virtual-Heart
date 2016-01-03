@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Assets.Scripts;
 
 /// <summary>
 /// Manages selection of objects
@@ -7,7 +8,19 @@ using System.Collections;
 /// </summary>
 public class selectionManager : MonoBehaviour {
 
+    public Color SelectedColor;
+    public Material SelectedMaterial;
+
     private SelectedObjInfo _selectedObjInfo;
+
+    private static selectionManager s_instance;
+    public static selectionManager Instance
+    {
+        get
+        {
+            return s_instance ?? (s_instance = GameObject.Find("SelectionManager").GetComponent<selectionManager>());
+        }
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -29,7 +42,9 @@ public class selectionManager : MonoBehaviour {
                 // If the object is alread selected ignore the selection
                 if (_selectedObjInfo != null && objToSelect.Selectable == _selectedObjInfo.Selectable)
                 {
-                    Debug.Log("'" + _selectedObjInfo.Name + "' is alread selected");
+                    Debug.Log("'" + _selectedObjInfo.Name + "' is alread selected. Deselecting.");
+                    _selectedObjInfo.Selectable.Deselect();
+                    _selectedObjInfo = null;
                     return;
                 }
 
