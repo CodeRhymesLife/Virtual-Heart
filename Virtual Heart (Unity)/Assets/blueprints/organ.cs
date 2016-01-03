@@ -6,17 +6,24 @@ using UnityEngine;
 
 public class organ : MonoBehaviour, ISelectable {
 
+    // Handlers for selection and deselection
+    public delegate void OrganHandler(organ o);
+    public static event OrganHandler OrganSelected;
+    public static event OrganHandler OrganDeselected;
+
     public Material defaultMaterial;
     public Material selectedMaterial;
 
-    // Handlers for selection and deselection
-    private delegate void OrganHandler(organ o);
-    private static event OrganHandler OrganSelected;
-    private static event OrganHandler OrganDeselected;
+    private OrganMetadataManager.OrganMetadata _metadata;
+
+    public OrganMetadataManager.OrganMetadata Metadata
+    {
+        get { return _metadata; }
+    }
 
     // Use this for initialization
     void Start () {
-        OrganMetadataManager.OrganMetadata metadata = OrganMetadataManager.Instance.GetOrganMetadata(name);
+        _metadata = OrganMetadataManager.Instance.GetOrganMetadata(name);
 
         // Create a label for this organ
         GameObject labelManagerGameObject = GameObject.Find("LabelManager");
