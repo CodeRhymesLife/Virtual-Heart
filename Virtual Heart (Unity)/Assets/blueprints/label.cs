@@ -22,7 +22,14 @@ public class label : MonoBehaviour {
             }
 
             _anchor = value;
-            gameObject.GetComponent<TextMesh>().text = Anchor.name;
+            name = "Lable for: " + Anchor.name;
+
+            // Set text on the label
+            TextMesh textMesh = gameObject.GetComponent<TextMesh>();
+            textMesh.text = Anchor.name;
+
+            // Add a box collider around the text so we can select it
+            gameObject.AddComponent<BoxCollider>();
 
             // Draw the line between the label and the anchor
             {
