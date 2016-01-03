@@ -74,6 +74,11 @@ public class label : MonoBehaviour, ISelectable {
         private set;
     }
 
+    void Start()
+    {
+        Line.enabled = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -123,6 +128,7 @@ public class label : MonoBehaviour, ISelectable {
     public void Select()
     {
         SetTextColor(selectionManager.Instance.SelectedColor);
+        Line.enabled = true;
         ISelectable selectable = Anchor.GetComponent<ISelectable>();
         if (selectable != null)
             selectable.Select();
@@ -131,6 +137,7 @@ public class label : MonoBehaviour, ISelectable {
     public void Deselect()
     {
         SetTextColor(Color.black);
+        Line.enabled = false;
         ISelectable selectable = Anchor.GetComponent<ISelectable>();
         if (selectable != null)
             selectable.Deselect();
