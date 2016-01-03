@@ -16,31 +16,6 @@ public class labelManager : MonoBehaviour {
         set { _labels = value; }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
-            {
-                Debug.Log("Name = " + hit.collider.name);
-                Debug.Log("Tag = " + hit.collider.tag);
-                Debug.Log("Hit Point = " + hit.point);
-                Debug.Log("Normal = " + hit.normal);
-                Debug.Log("Object position = " + hit.collider.gameObject.transform.position);
-
-                label lbl = hit.collider.gameObject.GetComponent<label>();
-                if(lbl != null)
-                {
-                    Debug.Log("Label clicked! Name - " + lbl.name);
-                }
-            }
-        }
-
-    }
-
     public void AddLabelFor(GameObject anchor)
     {
         // Create the label and set it's anchor

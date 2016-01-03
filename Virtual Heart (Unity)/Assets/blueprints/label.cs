@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-public class label : MonoBehaviour {
+public class label : MonoBehaviour, ISelectable {
 
     /// <summary>
     /// The object this label is anchored to
@@ -116,4 +116,18 @@ public class label : MonoBehaviour {
 
         return closestPoint;
     }
+
+    #region ISelectable
+
+    public void Select()
+    {
+        Debug.Log(name + " selected");
+    }
+
+    public void Deselect()
+    {
+        Debug.Log(name + " deselected");
+    }
+
+    #endregion ISelectable
 }
