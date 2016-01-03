@@ -7,6 +7,8 @@ using Assets.Scripts;
 
 public class label : MonoBehaviour, ISelectable {
 
+    public Color SelectedColor;
+
     /// <summary>
     /// The object this label is anchored to
     /// </summary>
@@ -127,7 +129,7 @@ public class label : MonoBehaviour, ISelectable {
 
     public void Select()
     {
-        SetTextColor(selectionManager.Instance.SelectedColor);
+        SetTextColor(SelectedColor);
         Line.enabled = true;
         ISelectable selectable = Anchor.GetComponent<ISelectable>();
         if (selectable != null)

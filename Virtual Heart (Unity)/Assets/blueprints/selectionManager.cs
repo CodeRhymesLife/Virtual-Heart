@@ -8,19 +8,7 @@ using Assets.Scripts;
 /// </summary>
 public class selectionManager : MonoBehaviour {
 
-    public Color SelectedColor;
-    public Material SelectedMaterial;
-
     private SelectedObjInfo _selectedObjInfo;
-
-    private static selectionManager s_instance;
-    public static selectionManager Instance
-    {
-        get
-        {
-            return s_instance ?? (s_instance = GameObject.Find("SelectionManager").GetComponent<selectionManager>());
-        }
-    }
 
 	// Update is called once per frame
 	void Update () {
