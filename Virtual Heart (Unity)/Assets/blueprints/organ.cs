@@ -1,11 +1,18 @@
 ﻿using Assets.blueprints;
 using Assets.Scripts;
+using System;
 using UnityEngine;
 
 
 public class organ : MonoBehaviour, ISelectable {
 
-    private Material originalMaterial;
+    public Material defaultMaterial;
+    public Material selectedMaterial;
+
+    // Handlers for selection and deselection
+    private delegate void OrganHandler(organ o);
+    private static event OrganHandler OrganSelected;
+    private static event OrganHandler OrganDeselected;
 
     // Use this for initialization
     void Start () {
@@ -16,12 +23,25 @@ public class organ : MonoBehaviour, ISelectable {
         labelManager manager = labelManagerGameObject.GetComponent<labelManager>();
         manager.AddLabelFor(gameObject);
 
-        // Save the original material used on this mesh
-        foreach (MeshRenderer meshRenderer in GetComponentsInChildren<MeshRenderer>())
+        // Make sure we're starting with the default material and default opacity
+        SetMaterial(defaultMaterial);
+        SetMaterialOpaque(opaque: false);
+
+        // When an organ is selected and it's not this organ
+        // make this organ opaque
+        OrganSelected += o =>
         {
-            originalMaterial = meshRenderer.material;
-            break;
-        }
+            if (o != this)
+                SetMaterialOpaque(opaque: true);
+        };
+
+        // When an organ is deselected and it's not this organ
+        // make this organ non-opaque
+        OrganDeselected += o =>
+        {
+            if (o != this)
+                SetMaterialOpaque(opaque: false);
+        };
     }
 
     #region ISelectable
@@ -29,23 +49,39 @@ public class organ : MonoBehaviour, ISelectable {
     public void Select()
     {
         Debug.Log("Selecting " + name);
-        SetMaterial(selectionManager.Instance.SelectedMaterial);
+        SetMaterial(selectedMaterial);
+        OrganSelected(this);
     }
 
     public void Deselect()
     {
         Debug.Log("Selecting " + name);
-        SetMaterial(originalMaterial);
+        SetMaterial(defaultMaterial);
+        OrganDeselected(this);
     }
+
+    #endregion ISelectable
 
     private void SetMaterial(Material material)
     {
-        Debug.Log("Setting '" + material.name + "' on '" + name +"'");
+        Debug.Log("Setting '" + material.name + "' on '" + name + "'");
         foreach (MeshRenderer meshRenderer in GetComponentsInChildren<MeshRenderer>())
         {
             meshRenderer.material = material;
         }
     }
 
-    #endregion ISelectable
+    private void SetMaterialOpaque(bool opaque)
+    {
+        float opacity = opaque ? 0.1f : 1f;
+        Shader shader = opaque ? Shader.Find("Transparent/Diffuse") : Shader.Find("Standard");
+
+        Debug.Log("Setting opacoty to " + opacity + " with shader '" + shader.name + "' on '" + name + "'");
+        foreach (MeshRenderer meshRenderer in GetComponentsInChildren<MeshRenderer>())
+        {
+            Color currentColor = meshRenderer.material.color;
+            meshRenderer.material.color = new Color(currentColor.r, currentColor.g, currentColor.b, opacity);
+            meshRenderer.material.shader = shader;
+        }
+    }
 }
