@@ -14,6 +14,8 @@ public class organPart : MonoBehaviour {
     private Material defaultOrganPartColor;
     private Material selectedMaterial;
 
+    private ISelectable _label;
+
     public OrganMetadataManager.OrganPartMetadata Metadata
     {
         get;
@@ -42,33 +44,72 @@ public class organPart : MonoBehaviour {
         // Create a label for this organ
         GameObject labelManagerGameObject = GameObject.Find("OrganLabelManager");
         labelManager manager = labelManagerGameObject.GetComponent<labelManager>();
-        ISelectable label = manager.AddLabel("Lable for: " + gameObject.name, Metadata.Name);
-        label.Selected += l => {
-            Debug.Log("Highlighting " + name);
-            SetMaterial(selectedMaterial);
-            AnOrganPartHighlighted(this);
-        };
-        label.Deselected += l => {
-            Debug.Log("Unhighlighting " + name);
-            SetMaterial(defaultOrganPartColor);
-            AnOrganPartUnHighlighted(this);
-        };
+        _label = manager.AddLabel("Lable for: " + gameObject.name, Metadata.Name);
+        _label.Selected += OnLabelSelected;
+        _label.Deselected += OnLabelDeselected;
 
-        // When an organ is selected and it's not this organ
-        // make this organ opaque
-        AnOrganPartHighlighted += o =>
-        {
-            if (o != this)
-                SetMaterialOpaque(opaque: true);
-        };
+        // Add global highlighted event handlers
+        AnOrganPartHighlighted += OnAnOrganPartHighlighted;
+        AnOrganPartUnHighlighted += OnAnOrganPartUnhighlighted;
+    }
 
-        // When an organ is deselected and it's not this organ
-        // make this organ non-opaque
-        AnOrganPartUnHighlighted += o =>
+    /// <summary>
+    /// Remove global handlers
+    /// </summary>
+    void OnDestroy()
+    {
+        if (_label != null)
         {
-            if (o != this)
-                SetMaterialOpaque(opaque: false);
-        };
+            _label.Selected -= OnLabelSelected;
+            _label.Deselected -= OnLabelDeselected;
+        }
+
+        AnOrganPartHighlighted -= OnAnOrganPartHighlighted;
+        AnOrganPartUnHighlighted -= OnAnOrganPartUnhighlighted;
+    }
+
+    /// <summary>
+    /// When the label for this organ part is selected
+    /// highlight this organ part
+    /// </summary>
+    /// <param name="label">label for t his organ part</param>
+    private void OnLabelSelected(ISelectable label)
+    {
+        Debug.Log("Highlighting " + name);
+        SetMaterial(selectedMaterial);
+        AnOrganPartHighlighted(this);
+    }
+
+    /// <summary>
+    /// When the label for this organ part is deselected
+    /// make sure the default material is set
+    /// </summary>
+    /// <param name="label">label for t his organ part</param>
+    private void OnLabelDeselected(ISelectable label)
+    {
+        Debug.Log("Unhighlighting " + name);
+        SetMaterial(defaultOrganPartColor);
+        AnOrganPartUnHighlighted(this);
+    }
+
+    /// <summary>
+    /// When an organ is selected and it's not this organ make this organ opaque
+    /// </summary>
+    /// <param name="highlightedOrgan">highlighted organ</param>
+    private void OnAnOrganPartHighlighted(organPart highlightedOrgan)
+    {
+        if (highlightedOrgan != this)
+            SetMaterialOpaque(opaque: true);
+    }
+
+    /// <summary>
+    /// When an organ is selected and it's not this organ make this organ non-opaque
+    /// </summary>
+    /// <param name="highlightedOrgan">highlighted organ</param>
+    private void OnAnOrganPartUnhighlighted(organPart highlightedOrgan)
+    {
+        if (highlightedOrgan != this)
+            SetMaterialOpaque(opaque: false);
     }
 
     /// <summary>
