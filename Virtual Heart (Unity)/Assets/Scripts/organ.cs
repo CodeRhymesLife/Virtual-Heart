@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 using Assets.blueprints;
 
 namespace Assets.Scripts
@@ -15,13 +16,19 @@ namespace Assets.Scripts
         // Use this for initialization
         void Start()
         {
+            if (Metadata == null)
+                throw new ArgumentNullException("Metadata", "Metadata needs to be set by the creator of this script");
 
-        }
+            // Create an object for each organ part and instantiate it
+            foreach(OrganMetadataManager.OrganPartMetadata organPartMetadata in Metadata.Parts)
+            {
+                GameObject organPartObj = new GameObject(organPartMetadata.Name);
+                organPart script = organPartObj.AddComponent<organPart>();
+                script.Metadata = organPartMetadata;
 
-        // Update is called once per frame
-        void Update()
-        {
-
+                // Set the new part as a child of this organ
+                organPartObj.transform.parent = gameObject.transform;
+            }
         }
     }
 }

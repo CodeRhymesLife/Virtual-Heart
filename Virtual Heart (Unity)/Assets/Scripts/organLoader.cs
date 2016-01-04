@@ -25,7 +25,6 @@ namespace Assets.Scripts
             GameObject organObj = new GameObject(organMetadata.Name);
             organ script = organObj.AddComponent<organ>();
             script.Metadata = organMetadata;
-            Instantiate(organObj);
 
             // Size properly
         }
