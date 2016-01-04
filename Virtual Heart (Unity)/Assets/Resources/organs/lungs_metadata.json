@@ -1,0 +1,48 @@
+{
+	"name": "Lungs",
+	"FMAId": 68877,
+	"description": "N/A",
+	"meshFilesFolder": "organs/lungs",
+	"location": {
+		"z": 1221.79296875,
+		"x": 29.656145095825195,
+		"y": -131.355712890625
+	},
+	"parts" : [
+		{
+			"name": "Middle Lobe of Lung",
+			"FMAId": 7383,
+			"description": "N/A",
+		},
+		{
+			"name": "Lower Lobe of Right Lung",
+			"FMAId": 7337,
+			"description": "N/A",
+		},
+		{
+			"name": "Trachea",
+			"FMAId": 7394,
+			"description": "N/A",
+		},
+		{
+			"name": "Bronchus",
+			"FMAId": 7409,
+			"description": "N/A",
+		},
+		{
+			"name": "Lower Lobe of Left Lung",
+			"FMAId": 7371,
+			"description": "N/A",
+		},
+		{
+			"name": "Upper Lobe of Left Lung",
+			"FMAId": 7370,
+			"description": "N/A",
+		},
+		{
+			"name": "Upper Lobe of Right Lung",
+			"FMAId": 7333,
+			"description": "N/A",
+		},
+	],
+}
