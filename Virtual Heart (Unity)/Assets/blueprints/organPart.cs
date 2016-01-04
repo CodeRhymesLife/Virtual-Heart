@@ -14,9 +14,9 @@ public class organPart : MonoBehaviour, ISelectable {
     private Material defaultOrganPartColor;
     private Material selectedMaterial;
 
-    private OrganMetadataManager.OrganMetadata _metadata;
+    private OrganMetadataManager.OrganPartMetadata _metadata;
 
-    public OrganMetadataManager.OrganMetadata Metadata
+    public OrganMetadataManager.OrganPartMetadata Metadata
     {
         get { return _metadata; }
     }
@@ -26,7 +26,7 @@ public class organPart : MonoBehaviour, ISelectable {
         defaultOrganPartColor = (Material) Resources.Load("Materials/defaultOrganPartColor", typeof(Material));
         selectedMaterial = (Material)Resources.Load("Materials/highlightYellow", typeof(Material));
 
-        _metadata = OrganMetadataManager.Instance.GetOrganMetadata(name);
+        _metadata = OrganMetadataManager.GetOrganMetadata(name);
 
         // Create a label for this organ
         GameObject labelManagerGameObject = GameObject.Find("LabelManager");

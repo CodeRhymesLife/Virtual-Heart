@@ -8,68 +8,90 @@ namespace Assets.blueprints
 {
     public class OrganMetadataManager
     {
-        private const string HeartMetadataFilename = "organs/heart_metadata.json";
-
-        private JSONNode _organMetadata;
-        private Dictionary<string, JSONNode> _temporaryDictionary;
-
-        private static OrganMetadataManager _instance;
-        public static OrganMetadataManager Instance
-        {
-            get
-            {
-                return _instance ?? (_instance = new OrganMetadataManager());
-            }
-        }
+        #region Stuff to keep
+        private const string OrganMetadataFolder = "organs";
 
         /// <summary>
-        /// Reads in the metadata file and saves it
+        /// Load metadata for each organ
         /// </summary>
-        private OrganMetadataManager()
+        /// <returns></returns>
+        public static OrganMetadata[] LoadMetadata()
         {
-            try
-            {
-                Debug.Log("Loading file: " + HeartMetadataFilename);
-                TextAsset heartMetadata = (TextAsset)Resources.Load(HeartMetadataFilename, typeof(TextAsset));
-                _organMetadata = JSON.Parse(heartMetadata.text);
+            Debug.Log("Loading all metadata files");
+            List<OrganMetadata> allOrganMetadata = new List<OrganMetadata>();
 
-                // TEMPORARY
-                // Create dicitonary of organs for backward compatability
-                Debug.Log("Adding parts to temp dict");
-                _temporaryDictionary = new Dictionary<string, JSONNode>();
-                for (int organPartIndex = 0; organPartIndex < _organMetadata["parts"].Count; organPartIndex++)
-                {
-                    JSONNode part = _organMetadata["parts"][organPartIndex];
-                    _temporaryDictionary[part["name"]] = part;
-                }
-
-                Debug.Log("Metadata loaded successfully");
-            }
-            catch (Exception e)
+            // Loop over each json file and load the metadata for that file
+            TextAsset[] heartMetadata = Resources.LoadAll<TextAsset>(OrganMetadataFolder);
+            foreach(TextAsset metadataFile in heartMetadata)
             {
-                Debug.Log("Error when reading metadata file: " + e.Message);
-                throw e;
+                JSONNode root = JSON.Parse(metadataFile.text);
+                OrganMetadata organMetadata = new OrganMetadata(root);
+                allOrganMetadata.Add(organMetadata);
+                Debug.Log("Loaded metadata for organ: " + organMetadata.Name);
             }
+
+            Debug.Log("Metadata files loaded successfully");
+            return allOrganMetadata.ToArray();
         }
+
+        #endregion Stuff to keep
+
+        private static OrganMetadata[] s_tempData;
 
         /// <summary>
         /// Gets organ metadata for the specified organ
         /// </summary>
         /// <param name="organName">Name of organ to get data for</param>
-        public OrganMetadata GetOrganMetadata(string organName)
+        public static OrganPartMetadata GetOrganMetadata(string organName)
         {
+            if (s_tempData == null)
+                s_tempData = LoadMetadata();
+
             Debug.Log("Retrieving metadata for '" + organName + "'");
-            return new OrganMetadata
+            foreach(OrganPartMetadata organPart in s_tempData[0].Parts)
             {
-                FMAId = _temporaryDictionary[organName]["FMAId"].Value,
-                Description = _temporaryDictionary[organName]["description"],
-            };
+                if (organPart.Name == organName)
+                    return organPart;
+            }
+
+            throw new ArgumentException("organName", "Invalid organ name");
         }
 
-        public class OrganMetadata
+        /// <summary>
+        /// Contains information about an organ with multiple parts (e.g. the Heart)
+        /// </summary>
+        public class OrganMetadata : OrganPartMetadata
         {
+            public List<OrganPartMetadata> Parts;
+
+            public OrganMetadata(JSONNode info) : base(info)
+            {
+                Parts = new List<OrganPartMetadata>();
+
+                // Create metadata for each organ part
+                JSONNode parts = info["parts"];
+                for (int organPartIndex = 0; organPartIndex < parts.Count; organPartIndex++)
+                {
+                    Parts.Add(new OrganPartMetadata(parts[organPartIndex]));
+                }
+            }
+        }
+
+        /// <summary>
+        /// Contains information about a single part of an organ (e.g. Mitral Valve of the Heart)
+        /// </summary>
+        public class OrganPartMetadata
+        {
+            public string Name;
             public string FMAId;
             public string Description;
+
+            public OrganPartMetadata(JSONNode info)
+            {
+                Name = info["name"].Value;
+                FMAId = info["FMAId"].Value;
+                Description = info["description"].Value;
+            }
         }
     }
 }
