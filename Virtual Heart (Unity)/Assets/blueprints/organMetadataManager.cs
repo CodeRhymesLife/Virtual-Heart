@@ -7,7 +7,7 @@ namespace Assets.blueprints
 {
     public class OrganMetadataManager
     {
-        private const string MetadataFilename = @"D:\Apps\Virtual-Heart\Virtual Heart (Unity)\Assets\blueprints\heart\organ_metadata.json";
+        private const string HeartMetadataFilename = "heart_metadata.json";
 
         private JSONNode _organMetadata;
 
@@ -27,12 +27,9 @@ namespace Assets.blueprints
         {
             try
             {
-                using (StreamReader reader = new StreamReader(MetadataFilename))
-                {
-                    var json = reader.ReadToEnd();
-                    _organMetadata = JSON.Parse(json);
-                    Debug.Log("Metadata loaded successfully");
-                }
+                TextAsset heartMetadata = (TextAsset)Resources.Load(HeartMetadataFilename, typeof(TextAsset));
+                _organMetadata = JSON.Parse(heartMetadata.text);
+                Debug.Log("Metadata loaded successfully");
             }
             catch (Exception e)
             {
