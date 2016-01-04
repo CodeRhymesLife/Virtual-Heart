@@ -11,8 +11,8 @@ public class organ : MonoBehaviour, ISelectable {
     public static event OrganHandler OrganSelected;
     public static event OrganHandler OrganDeselected;
 
-    public Material defaultMaterial;
-    public Material selectedMaterial;
+    private Material defaultOrganPartColor;
+    private Material selectedMaterial;
 
     private OrganMetadataManager.OrganMetadata _metadata;
 
@@ -23,6 +23,9 @@ public class organ : MonoBehaviour, ISelectable {
 
     // Use this for initialization
     void Start () {
+        defaultOrganPartColor = (Material) Resources.Load("Materials/defaultOrganPartColor", typeof(Material));
+        selectedMaterial = (Material)Resources.Load("Materials/highlightYellow", typeof(Material));
+
         _metadata = OrganMetadataManager.Instance.GetOrganMetadata(name);
 
         // Create a label for this organ
@@ -31,7 +34,7 @@ public class organ : MonoBehaviour, ISelectable {
         manager.AddLabelFor(gameObject);
 
         // Make sure we're starting with the default material and default opacity
-        SetMaterial(defaultMaterial);
+        SetMaterial(defaultOrganPartColor);
         SetMaterialOpaque(opaque: false);
 
         // When an organ is selected and it's not this organ
@@ -63,7 +66,7 @@ public class organ : MonoBehaviour, ISelectable {
     public void Deselect()
     {
         Debug.Log("Selecting " + name);
-        SetMaterial(defaultMaterial);
+        SetMaterial(defaultOrganPartColor);
         OrganDeselected(this);
     }
 
