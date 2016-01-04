@@ -4,12 +4,12 @@ using System;
 using UnityEngine;
 
 
-public class organ : MonoBehaviour, ISelectable {
+public class organPart : MonoBehaviour, ISelectable {
 
     // Handlers for selection and deselection
-    public delegate void OrganHandler(organ o);
-    public static event OrganHandler OrganSelected;
-    public static event OrganHandler OrganDeselected;
+    public delegate void OrganHandler(organPart o);
+    public static event OrganHandler OrganPartSelected;
+    public static event OrganHandler OrganPartDeselected;
 
     private Material defaultOrganPartColor;
     private Material selectedMaterial;
@@ -39,7 +39,7 @@ public class organ : MonoBehaviour, ISelectable {
 
         // When an organ is selected and it's not this organ
         // make this organ opaque
-        OrganSelected += o =>
+        OrganPartSelected += o =>
         {
             if (o != this)
                 SetMaterialOpaque(opaque: true);
@@ -47,7 +47,7 @@ public class organ : MonoBehaviour, ISelectable {
 
         // When an organ is deselected and it's not this organ
         // make this organ non-opaque
-        OrganDeselected += o =>
+        OrganPartDeselected += o =>
         {
             if (o != this)
                 SetMaterialOpaque(opaque: false);
@@ -60,14 +60,14 @@ public class organ : MonoBehaviour, ISelectable {
     {
         Debug.Log("Selecting " + name);
         SetMaterial(selectedMaterial);
-        OrganSelected(this);
+        OrganPartSelected(this);
     }
 
     public void Deselect()
     {
         Debug.Log("Selecting " + name);
         SetMaterial(defaultOrganPartColor);
-        OrganDeselected(this);
+        OrganPartDeselected(this);
     }
 
     #endregion ISelectable

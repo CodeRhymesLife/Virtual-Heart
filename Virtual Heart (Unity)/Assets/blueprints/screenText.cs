@@ -15,7 +15,7 @@ public class screenText : MonoBehaviour {
         ShowText(DefaultText);
 
         // Show organ description when it's selected
-        organ.OrganSelected += o =>
+        organPart.OrganPartSelected += o =>
         {
             ShowText(
                 "FMA Id: " + o.Metadata.FMAId,
@@ -24,7 +24,7 @@ public class screenText : MonoBehaviour {
         };
 
         // Remove organ desicription when it's selected
-        organ.OrganDeselected += o =>
+        organPart.OrganPartDeselected += o =>
         {
             ShowText(DefaultText);
         };
