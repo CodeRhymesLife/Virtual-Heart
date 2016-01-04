@@ -22,17 +22,27 @@ public class organPart : MonoBehaviour, ISelectable {
 
     // Use this for initialization
     void Start () {
+        if (Metadata == null)
+            throw new ArgumentNullException("Metadata", "organPart Metadata needs to be set by the creator of this script");
+
         defaultOrganPartColor = (Material) Resources.Load("Materials/defaultOrganPartColor", typeof(Material));
         selectedMaterial = (Material)Resources.Load("Materials/highlightYellow", typeof(Material));
+
+        // Create the mesh for this organ part
+        GameObject meshObj = new GameObject(Metadata.Name + "_MESH");
+        MeshFilter meshFilter = meshObj.AddComponent<MeshFilter>();
+        meshFilter.mesh = Resources.Load<Mesh>(Metadata.MeshFile);
+        MeshRenderer meshRenderer = meshObj.AddComponent<MeshRenderer>();
+        meshObj.transform.parent = gameObject.transform;
+
+        // Make sure we're starting with the default material and default opacity
+        SetMaterial(defaultOrganPartColor);
+        SetMaterialOpaque(opaque: false);
 
         // Create a label for this organ
         GameObject labelManagerGameObject = GameObject.Find("LabelManager");
         labelManager manager = labelManagerGameObject.GetComponent<labelManager>();
         manager.AddLabelFor(gameObject);
-
-        // Make sure we're starting with the default material and default opacity
-        SetMaterial(defaultOrganPartColor);
-        SetMaterialOpaque(opaque: false);
 
         // When an organ is selected and it's not this organ
         // make this organ opaque

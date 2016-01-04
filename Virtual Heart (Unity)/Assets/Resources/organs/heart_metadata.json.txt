@@ -2,6 +2,7 @@
 	"name": "Heart",
 	"FMAId": 7088,
 	"description": "Organ with cavitated organ parts, which is continuous with the systemic and pulmonary arterial and venous trees. Examples: There is only one heart. ",
+	"meshFilesFolder": "organs/heart",
 	"location": {
 		"z": 1221.79296875,
 		"x": 29.656145095825195,
@@ -18,7 +19,6 @@
 			"FMAId": 3818,
 			"description": "Wall of organ which has as its parts the endocardium, myocardium , epicardium, and the cardiac septum, surrounded by the pericardial sac proper and is continuous with the walls of the systemic and pulmonary arterial and venous trees. ",
 		},
-		
 		{
 			"name": "Posterior papillary muscle of right ventricle",
 			"FMAId": 7261,

@@ -17,7 +17,7 @@ namespace Assets.Scripts
         void Start()
         {
             if (Metadata == null)
-                throw new ArgumentNullException("Metadata", "Metadata needs to be set by the creator of this script");
+                throw new ArgumentNullException("Metadata", "organ Metadata needs to be set by the creator of this script");
 
             // Create an object for each organ part and instantiate it
             foreach(OrganMetadataManager.OrganPartMetadata organPartMetadata in Metadata.Parts)

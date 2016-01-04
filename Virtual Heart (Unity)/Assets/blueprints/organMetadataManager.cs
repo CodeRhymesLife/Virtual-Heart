@@ -60,7 +60,7 @@ namespace Assets.blueprints
         /// <summary>
         /// Contains information about an organ with multiple parts (e.g. the Heart)
         /// </summary>
-        public class OrganMetadata : OrganPartMetadata
+        public class OrganMetadata : Metadata
         {
             public List<OrganPartMetadata> Parts;
 
@@ -69,10 +69,11 @@ namespace Assets.blueprints
                 Parts = new List<OrganPartMetadata>();
 
                 // Create metadata for each organ part
+                string meshFilesFolder = info["meshFilesFolder"];
                 JSONNode parts = info["parts"];
                 for (int organPartIndex = 0; organPartIndex < parts.Count; organPartIndex++)
                 {
-                    Parts.Add(new OrganPartMetadata(parts[organPartIndex]));
+                    Parts.Add(new OrganPartMetadata(parts[organPartIndex], meshFilesFolder));
                 }
             }
         }
@@ -80,13 +81,23 @@ namespace Assets.blueprints
         /// <summary>
         /// Contains information about a single part of an organ (e.g. Mitral Valve of the Heart)
         /// </summary>
-        public class OrganPartMetadata
+        public class OrganPartMetadata : Metadata
+        {
+            public string MeshFile;
+
+            public OrganPartMetadata(JSONNode info, string meshFolder) : base(info)
+            {
+                MeshFile = meshFolder + "/" + Name;
+            }
+        }
+
+        public abstract class Metadata
         {
             public string Name;
             public string FMAId;
             public string Description;
 
-            public OrganPartMetadata(JSONNode info)
+            public Metadata(JSONNode info)
             {
                 Name = info["name"].Value;
                 FMAId = info["FMAId"].Value;
