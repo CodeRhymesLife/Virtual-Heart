@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts;
 
 public class labelManager : MonoBehaviour {
 
@@ -9,22 +10,28 @@ public class labelManager : MonoBehaviour {
 
     private const float DistanceBetweenLabels = 0.06f;
 
-    private List<label> _labels;
-    private List<label> Labels
+    private List<selectableLabel> _labels;
+    private List<selectableLabel> Labels
     {
-        get { return _labels ?? (_labels = new List<label>()); }
+        get { return _labels ?? (_labels = new List<selectableLabel>()); }
         set { _labels = value; }
     }
 
-    public void AddLabelFor(GameObject anchor)
+    public ISelectable AddLabel(string name, string text)
     {
         // Create the label and set it's anchor
-        GameObject lbl = Instantiate(label) as GameObject;
+        GameObject labelObj = Instantiate(label) as GameObject;
         Vector3 position = gameObject.transform.position + new Vector3(0, Labels.Count * DistanceBetweenLabels, 0);
-        lbl.transform.position = position;
+        labelObj.transform.position = position;
 
-        label labelComponent = lbl.GetComponent<label>();
-        labelComponent.Anchor = anchor;
+        selectableLabel labelComponent = labelObj.GetComponent<selectableLabel>();
+        labelComponent.name = name;
+
+        // Set text on the label
+        TextMesh textMesh = labelObj.GetComponent<TextMesh>();
+        textMesh.text = text;
         Labels.Add(labelComponent);
+
+        return labelComponent;
     }
 }

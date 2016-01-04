@@ -4,12 +4,12 @@ using System;
 using UnityEngine;
 
 
-public class organPart : MonoBehaviour, ISelectable {
+public class organPart : MonoBehaviour {
 
-    // Handlers for selection and deselection
+    // Global handlers for selection and deselection
     public delegate void OrganHandler(organPart o);
-    public static event OrganHandler OrganPartSelected;
-    public static event OrganHandler OrganPartDeselected;
+    public static event OrganHandler AnOrganPartHighlighted;
+    public static event OrganHandler AnOrganPartUnHighlighted;
 
     private Material defaultOrganPartColor;
     private Material selectedMaterial;
@@ -32,7 +32,7 @@ public class organPart : MonoBehaviour, ISelectable {
         GameObject meshObj = new GameObject(Metadata.Name + "_MESH");
         MeshFilter meshFilter = meshObj.AddComponent<MeshFilter>();
         meshFilter.mesh = Resources.Load<Mesh>(Metadata.MeshFile);
-        MeshRenderer meshRenderer = meshObj.AddComponent<MeshRenderer>();
+        meshObj.AddComponent<MeshRenderer>();
         meshObj.transform.parent = gameObject.transform;
 
         // Make sure we're starting with the default material and default opacity
@@ -40,13 +40,23 @@ public class organPart : MonoBehaviour, ISelectable {
         SetMaterialOpaque(opaque: false);
 
         // Create a label for this organ
-        GameObject labelManagerGameObject = GameObject.Find("LabelManager");
+        GameObject labelManagerGameObject = GameObject.Find("OrganLabelManager");
         labelManager manager = labelManagerGameObject.GetComponent<labelManager>();
-        manager.AddLabelFor(gameObject);
+        ISelectable label = manager.AddLabel("Lable for: " + gameObject.name, Metadata.Name);
+        label.Selected += l => {
+            Debug.Log("Highlighting " + name);
+            SetMaterial(selectedMaterial);
+            AnOrganPartHighlighted(this);
+        };
+        label.Deselected += l => {
+            Debug.Log("Unhighlighting " + name);
+            SetMaterial(defaultOrganPartColor);
+            AnOrganPartUnHighlighted(this);
+        };
 
         // When an organ is selected and it's not this organ
         // make this organ opaque
-        OrganPartSelected += o =>
+        AnOrganPartHighlighted += o =>
         {
             if (o != this)
                 SetMaterialOpaque(opaque: true);
@@ -54,31 +64,17 @@ public class organPart : MonoBehaviour, ISelectable {
 
         // When an organ is deselected and it's not this organ
         // make this organ non-opaque
-        OrganPartDeselected += o =>
+        AnOrganPartUnHighlighted += o =>
         {
             if (o != this)
                 SetMaterialOpaque(opaque: false);
         };
     }
 
-    #region ISelectable
-
-    public void Select()
-    {
-        Debug.Log("Selecting " + name);
-        SetMaterial(selectedMaterial);
-        OrganPartSelected(this);
-    }
-
-    public void Deselect()
-    {
-        Debug.Log("Selecting " + name);
-        SetMaterial(defaultOrganPartColor);
-        OrganPartDeselected(this);
-    }
-
-    #endregion ISelectable
-
+    /// <summary>
+    /// Set a material on this organ part
+    /// </summary>
+    /// <param name="material">material to set</param>
     private void SetMaterial(Material material)
     {
         Debug.Log("Setting '" + material.name + "' on '" + name + "'");
@@ -88,6 +84,10 @@ public class organPart : MonoBehaviour, ISelectable {
         }
     }
 
+    /// <summary>
+    /// Set the opacity on this organ part
+    /// </summary>
+    /// <param name="opaque">opaque or not</param>
     private void SetMaterialOpaque(bool opaque)
     {
         float opacity = opaque ? 0.1f : 1f;
