@@ -6,6 +6,7 @@ namespace Assets.Scripts
 {
     public class organ : MonoBehaviour
     {
+        private bool _resized = false;
 
         public OrganMetadataManager.OrganMetadata Metadata
         {
@@ -28,6 +29,19 @@ namespace Assets.Scripts
 
                 // Set the new part as a child of this organ
                 organPartObj.transform.parent = gameObject.transform;
+            }
+        }
+
+        void Update()
+        {
+            if(!_resized)
+            {
+                // Resize the component
+                Bounds combinedBounds = new Bounds();
+                foreach (Renderer childRenderer in GetComponentsInChildren<Renderer>())
+                {
+                    combinedBounds.Encapsulate(childRenderer.bounds);
+                }
             }
         }
     }
