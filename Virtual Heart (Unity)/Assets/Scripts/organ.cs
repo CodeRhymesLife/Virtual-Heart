@@ -6,6 +6,8 @@ namespace Assets.Scripts
 {
     public class organ : MonoBehaviour
     {
+        private const float MaxSize = 0.25f; // meters
+
         private bool _resized = false;
 
         public OrganMetadataManager.OrganMetadata Metadata
@@ -36,12 +38,21 @@ namespace Assets.Scripts
         {
             if(!_resized)
             {
-                // Resize the component
+                // Get the size of this organ base on the size of it's children
                 Bounds combinedBounds = new Bounds();
                 foreach (Renderer childRenderer in GetComponentsInChildren<Renderer>())
                 {
                     combinedBounds.Encapsulate(childRenderer.bounds);
                 }
+
+                // If the renders haven't started yet then we can't calculate the size
+                if (combinedBounds.extents == new Vector3())
+                    return;
+
+                // Resize
+                float maxDimension = Math.Max(Math.Max(combinedBounds.extents.x, combinedBounds.extents.y), combinedBounds.extents.z);
+                gameObject.transform.localScale *= MaxSize / maxDimension;
+                _resized = true;
             }
         }
     }
