@@ -6,9 +6,20 @@ namespace Assets.Scripts
 {
     public class organ : MonoBehaviour
     {
-        private const float MaxSize = 0.25f; // meters
+        private const float InitialSize = 0.25f; // meters
 
-        private bool _resized = false;
+        #region Zooming consts
+
+        private const int MinZoomLevel = 0;
+        private const int MaxZoomLevel = 10;
+        private const float ZoomPercentage = 0.1f;
+        private const float ZoomInAmount = 1 + ZoomPercentage;
+        private const float ZoomOutAmount = 1 - ZoomPercentage;
+
+        #endregion Zooming consts
+
+        private bool _sizeInitialized = false;
+        private int _zoomLevel = 0;
 
         public OrganMetadataManager.OrganMetadata Metadata
         {
@@ -36,23 +47,56 @@ namespace Assets.Scripts
 
         void Update()
         {
-            if(!_resized)
+            if (!_sizeInitialized)
+                InitializeSize();
+            else
+                CheckZoom();
+        }
+
+        /// <summary>
+        /// Initialize this organ's size
+        /// </summary>
+        private void InitializeSize()
+        {
+            // Get the size of this organ base on the size of it's children
+            Bounds combinedBounds = new Bounds();
+            foreach (Renderer childRenderer in GetComponentsInChildren<Renderer>())
             {
-                // Get the size of this organ base on the size of it's children
-                Bounds combinedBounds = new Bounds();
-                foreach (Renderer childRenderer in GetComponentsInChildren<Renderer>())
+                combinedBounds.Encapsulate(childRenderer.bounds);
+            }
+
+            // If the renders haven't started yet then we can't calculate the size
+            if (combinedBounds.extents == new Vector3())
+                return;
+
+            // Resize
+            float largestDimension = Math.Max(Math.Max(combinedBounds.extents.x, combinedBounds.extents.y), combinedBounds.extents.z);
+            gameObject.transform.localScale *= InitialSize / largestDimension;
+            _sizeInitialized = true;
+        }
+
+        /// <summary>
+        /// Handles zooming in/out of the organ
+        /// </summary>
+        private void CheckZoom()
+        {
+            // Zoom out
+            if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            {
+                if (_zoomLevel > MinZoomLevel)
                 {
-                    combinedBounds.Encapsulate(childRenderer.bounds);
+                    gameObject.transform.localScale *= ZoomOutAmount; // Shrink
+                    _zoomLevel--;
                 }
-
-                // If the renders haven't started yet then we can't calculate the size
-                if (combinedBounds.extents == new Vector3())
-                    return;
-
-                // Resize
-                float maxDimension = Math.Max(Math.Max(combinedBounds.extents.x, combinedBounds.extents.y), combinedBounds.extents.z);
-                gameObject.transform.localScale *= MaxSize / maxDimension;
-                _resized = true;
+            }
+            // Zoom in
+            else if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            {
+                if (_zoomLevel < MaxZoomLevel)
+                {
+                    gameObject.transform.localScale *= ZoomInAmount; // Grow
+                    _zoomLevel++;
+                }
             }
         }
     }
