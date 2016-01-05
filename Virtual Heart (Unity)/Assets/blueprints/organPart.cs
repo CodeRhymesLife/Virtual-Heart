@@ -31,10 +31,7 @@ public class organPart : MonoBehaviour {
         selectedMaterial = (Material)Resources.Load("Materials/highlightYellow", typeof(Material));
 
         // Create the mesh for this organ part
-        GameObject meshObj = new GameObject(Metadata.Name + "_MESH");
-        MeshFilter meshFilter = meshObj.AddComponent<MeshFilter>();
-        meshFilter.mesh = Resources.Load<Mesh>(Metadata.MeshFile);
-        meshObj.AddComponent<MeshRenderer>();
+        GameObject meshObj = Instantiate(Resources.Load<GameObject>(Metadata.MeshFile));
         meshObj.transform.parent = gameObject.transform;
 
         // Make sure we're starting with the default material and default opacity
