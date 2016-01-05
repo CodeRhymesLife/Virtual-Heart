@@ -11,6 +11,8 @@ public class organPart : MonoBehaviour {
     public static event OrganHandler AnOrganPartHighlighted;
     public static event OrganHandler AnOrganPartUnHighlighted;
 
+    private float Opacity = 0.15f;
+
     private Material defaultOrganPartColor;
     private Material selectedMaterial;
 
@@ -128,7 +130,7 @@ public class organPart : MonoBehaviour {
     /// <param name="opaque">opaque or not</param>
     private void SetMaterialOpaque(bool opaque)
     {
-        float opacity = opaque ? 0.1f : 1f;
+        float opacity = opaque ? Opacity : 1f;
         Shader shader = opaque ? Shader.Find("Transparent/Diffuse") : Shader.Find("Standard");
 
         Debug.Log("Setting opacoty to " + opacity + " with shader '" + shader.name + "' on '" + name + "'");
