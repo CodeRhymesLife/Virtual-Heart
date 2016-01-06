@@ -21,6 +21,9 @@ namespace Assets.Scripts
         private bool _sizeInitialized = false;
         private int _zoomLevel = 0;
 
+        // Used to calculate rotation
+        private Vector3? _lastMousePosition = null;
+
         public OrganMetadataManager.OrganMetadata Metadata
         {
             get;
@@ -49,8 +52,9 @@ namespace Assets.Scripts
         {
             if (!_sizeInitialized)
                 InitializeSize();
-            else
-                CheckZoom();
+
+            CheckZoom();
+            CheckRotation();
         }
 
         /// <summary>
@@ -98,6 +102,30 @@ namespace Assets.Scripts
                     _zoomLevel++;
                 }
             }
+        }
+
+        /// <summary>
+        /// Handles rotation
+        /// </summary>
+        private void CheckRotation()
+        {
+            // Rotatate on right mouse click
+            if (Input.GetMouseButton(1))
+            {
+                if (_lastMousePosition == null)
+                    _lastMousePosition = Input.mousePosition;
+
+                Vector3 currentMousePosition = Input.mousePosition;
+
+                Vector3 distance = (Vector3)_lastMousePosition - currentMousePosition;
+                float rotationX = -distance.y % 360;
+                float rotationY = distance.x % 360;
+                transform.Rotate(new Vector3(rotationX, rotationY, 0), Space.World);
+
+                _lastMousePosition = currentMousePosition;
+            }
+            else
+                _lastMousePosition = null;
         }
     }
 }
