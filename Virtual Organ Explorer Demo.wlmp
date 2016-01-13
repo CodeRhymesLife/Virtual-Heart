@@ -64,7 +64,7 @@
         <BoundPropertyFloat Name="transparency" Value="1" />
       </BoundProperties>
     </TitleClip>
-    <TitleClip extentID="17" gapBefore="23.966666666666669" duration="3">
+    <TitleClip extentID="17" gapBefore="17.299999999999997" duration="4">
       <Effects>
         <TextEffect effectTemplateID="TextEffectFadeZoomTemplate" TextScriptId="9">
           <BoundProperties>
@@ -98,7 +98,75 @@
             <BoundPropertyFloat Name="size" Value="0.80000001192092896" />
             <BoundPropertyStringSet Name="string">
               <BoundPropertyStringElement Value="Transform the way " />
-              <BoundPropertyStringElement Value="you learn" />
+              <BoundPropertyStringElement Value="you Teach and " />
+              <BoundPropertyStringElement Value="Learn" />
+            </BoundPropertyStringSet>
+            <BoundPropertyString Name="style" Value="Plain" />
+            <BoundPropertyFloat Name="transparency" Value="0" />
+          </BoundProperties>
+        </TextEffect>
+      </Effects>
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyFloatSet Name="diffuseColor">
+          <BoundPropertyFloatElement Value="0.75" />
+          <BoundPropertyFloatElement Value="1" />
+          <BoundPropertyFloatElement Value="0" />
+        </BoundPropertyFloatSet>
+        <BoundPropertyFloat Name="transparency" Value="1" />
+      </BoundProperties>
+    </TitleClip>
+    <TitleClip extentID="35" gapBefore="0" duration="7">
+      <Effects />
+      <Transitions />
+      <BoundProperties>
+        <BoundPropertyFloatSet Name="diffuseColor">
+          <BoundPropertyFloatElement Value="0" />
+          <BoundPropertyFloatElement Value="0" />
+          <BoundPropertyFloatElement Value="0" />
+        </BoundPropertyFloatSet>
+        <BoundPropertyFloat Name="transparency" Value="0" />
+      </BoundProperties>
+    </TitleClip>
+    <TitleClip extentID="36" gapBefore="0" duration="7">
+      <Effects>
+        <TextEffect effectTemplateID="TextEffectFadeZoomTemplate" TextScriptId="9">
+          <BoundProperties>
+            <BoundPropertyBool Name="automatic" Value="false" />
+            <BoundPropertyFloatSet Name="color">
+              <BoundPropertyFloatElement Value="1" />
+              <BoundPropertyFloatElement Value="1" />
+              <BoundPropertyFloatElement Value="1" />
+            </BoundPropertyFloatSet>
+            <BoundPropertyStringSet Name="family">
+              <BoundPropertyStringElement Value="Segoe UI" />
+            </BoundPropertyStringSet>
+            <BoundPropertyBool Name="horizontal" Value="true" />
+            <BoundPropertyStringSet Name="justify">
+              <BoundPropertyStringElement Value="MIDDLE" />
+            </BoundPropertyStringSet>
+            <BoundPropertyBool Name="leftToRight" Value="true" />
+            <BoundPropertyFloatSet Name="length" />
+            <BoundPropertyFloat Name="maxExtent" Value="0" />
+            <BoundPropertyFloatSet Name="outlineColor">
+              <BoundPropertyFloatElement Value="0.64705884456634521" />
+              <BoundPropertyFloatElement Value="0.64705884456634521" />
+              <BoundPropertyFloatElement Value="0.64705884456634521" />
+            </BoundPropertyFloatSet>
+            <BoundPropertyInt Name="outlineSizeIndex" Value="0" />
+            <BoundPropertyFloatSet Name="position">
+              <BoundPropertyFloatElement Value="-0.023289680480957031" />
+              <BoundPropertyFloatElement Value="2.4418604373931885" />
+              <BoundPropertyFloatElement Value="0.02500000037252903" />
+            </BoundPropertyFloatSet>
+            <BoundPropertyFloat Name="size" Value="0.60000002384185791" />
+            <BoundPropertyStringSet Name="string">
+              <BoundPropertyStringElement Value="Next steps:" />
+              <BoundPropertyStringElement Value="" />
+              <BoundPropertyStringElement Value="- Add physiological simulations" />
+              <BoundPropertyStringElement Value="" />
+              <BoundPropertyStringElement Value="- Use your hands in Virtual and " />
+              <BoundPropertyStringElement Value="Augmented Realtiy" />
             </BoundPropertyStringSet>
             <BoundPropertyString Name="style" Value="Plain" />
             <BoundPropertyFloat Name="transparency" Value="0" />
@@ -189,7 +257,7 @@
         <BoundPropertyFloat Name="transparency" Value="1" />
       </BoundProperties>
     </TitleClip>
-    <VideoClip extentID="25" gapBefore="0" mediaItemID="2" inTime="9.9666666666666686" outTime="33.933333333333337" speed="1" stabilizationMode="0">
+    <VideoClip extentID="25" gapBefore="0" mediaItemID="2" inTime="9.9666666666666686" outTime="27.266666666666666" speed="1" stabilizationMode="0">
       <Effects />
       <Transitions />
       <BoundProperties>
@@ -252,8 +320,8 @@
             </BoundPropertyFloatSet>
             <BoundPropertyFloat Name="size" Value="0.80000001192092896" />
             <BoundPropertyStringSet Name="string">
-              <BoundPropertyStringElement Value="Load any part of the " />
-              <BoundPropertyStringElement Value="body" />
+              <BoundPropertyStringElement Value="Load any organ in " />
+              <BoundPropertyStringElement Value="the body" />
             </BoundPropertyStringSet>
             <BoundPropertyString Name="style" Value="Plain" />
             <BoundPropertyFloat Name="transparency" Value="0" />
@@ -410,7 +478,7 @@
         <BoundPropertyFloat Name="transparency" Value="0" />
       </BoundProperties>
     </TitleClip>
-    <TitleClip extentID="16" gapBefore="0" duration="3">
+    <TitleClip extentID="16" gapBefore="0" duration="4">
       <Effects />
       <Transitions />
       <BoundProperties>
@@ -435,6 +503,7 @@
         <ExtentRef id="16" />
         <ExtentRef id="29" />
         <ExtentRef id="31" />
+        <ExtentRef id="35" />
         <ExtentRef id="33" />
       </ExtentRefs>
     </ExtentSelector>
@@ -460,6 +529,7 @@
         <ExtentRef id="15" />
         <ExtentRef id="17" />
         <ExtentRef id="32" />
+        <ExtentRef id="36" />
         <ExtentRef id="34" />
       </ExtentRefs>
     </ExtentSelector>
